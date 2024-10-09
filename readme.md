@@ -38,4 +38,4 @@ The repository may contain projects covering a wide range of GCP analysis tasks,
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/meivinc/tf_gcp_python_func.git
+   git clone https://github.com/meivinc/gcp_tooling_hub.git
