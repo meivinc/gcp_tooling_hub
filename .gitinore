@@ -1,0 +1,45 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+**/venv/
+**/.venv/
+ENV/
+.python-version
+
+# VSCode settings
+.vscode/
+
+# PyCharm settings
+.idea/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Local credentials or secrets
+key.json
+*.pem
+*.key
+.env
+.env.*
+*.csv
+
+# MacOS
+.DS_Store
+
+# Output file
+roles_with_permissions_and_services.json
+
+debug.py
