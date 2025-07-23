@@ -38,7 +38,4 @@ key.json
 # MacOS
 .DS_Store
 
-# Output file
-roles_with_permissions_and_services.json
-
 debug.py
