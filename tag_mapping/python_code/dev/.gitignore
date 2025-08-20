@@ -1,0 +1,30 @@
+# Local configuration file (contains sensitive data)
+config.py
+
+# Virtual environment
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local test files
+dry_run_*.json
+test_*.json
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Local logs
+*.log

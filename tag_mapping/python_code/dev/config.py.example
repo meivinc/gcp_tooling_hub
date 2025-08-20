@@ -1,0 +1,17 @@
+# Example configuration file
+# Copy this to config.py and fill in your actual values
+# config.py will be ignored by git for security
+
+# GCP Organization Configuration
+ORG_ID = "your-org-id-here"  # e.g., "XXXXXXXXXX"
+
+# BigQuery Configuration  
+BQ_PROJECT_ID = "your-bigquery-project-id"  # e.g., "project-id-here"
+BQ_DATASET = "billing_data"
+BQ_TABLE_PROJECTS = "projects_with_tags"
+BQ_TABLE_TAGS = "project_tags"
+
+# Optional: Override other settings
+# BQ_DATASET = "custom_dataset_name"
+# BQ_TABLE_PROJECTS = "custom_projects_table"
+# BQ_TABLE_TAGS = "custom_tags_table"
