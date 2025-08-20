@@ -1,0 +1,33 @@
+# Sensitive configuration files
+python_code/dev/config.py
+terraform_code/terraform.tfvars
+
+# Terraform files
+terraform_code/.terraform/
+terraform_code/*.tfstate
+terraform_code/*.tfstate.backup
+terraform_code/terraform.tfplan
+terraform_code/.terraform.lock.hcl
+terraform_code/function-source*.zip
+terraform_code/tags-to-bigquery*.zip
+
+# Python
+python_code/dev/venv/
+python_code/dev/__pycache__/
+python_code/dev/*.pyc
+python_code/dev/*.pyo
+python_code/dev/*.pyd
+python_code/dev/dry_run_*.json
+python_code/dev/test_*.json
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
