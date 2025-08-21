@@ -11,7 +11,7 @@ locals {
 data "archive_file" "function_source" {
   type        = "zip"
   source_dir  = "../python_code/dev"
-  output_path = "./tags-to-bigquery-v1.0.zip"
+  output_path = "./${var.python_code_name}"
   excludes = [
     "venv",
     "__pycache__",

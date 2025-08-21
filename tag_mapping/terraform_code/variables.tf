@@ -57,3 +57,8 @@ variable "timezone" {
   type        = string
   default     = "Europe/Paris"
 }
+
+variable "python_code_name" {
+  description = "Name of Zip file used to push python code to cloud function"
+  type        = string
+}

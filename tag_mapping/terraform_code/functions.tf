@@ -1,6 +1,6 @@
 # Upload function source code to GCS bucket
 resource "google_storage_bucket_object" "object" {
-  name   = "tags-to-bigquery-v1.0.zip"
+  name   = var.python_code_name
   bucket = local.tooling_bucket
   source = data.archive_file.function_source.output_path
 }
