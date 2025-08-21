@@ -1,0 +1,18 @@
+# Example terraform.tfvars file
+# Copy this to terraform.tfvars and fill in your values
+
+# Required variables
+tooling_project_id     = "your-tooling-project-id"        # Project where Cloud Function will be deployed
+tooling_bucket        = "your-gcs-bucket-name"            # GCS bucket for function source code  
+sa_functions_email    = "your-function-sa@your-project.iam.gserviceaccount.com"  # Service account for function
+cloud_build_sa_email  = "your-cloudbuild-sa@your-project.iam.gserviceaccount.com"  # Service account for Cloud Build
+org_id               = "your-organization-id"             # Your GCP Organization ID
+bigquery_project_id = "your-bigquery-project-id"         # BigQuery project ID
+ 
+# Optional variables (with defaults)
+default_region       = "europe-west1"                     # GCP region
+bq_dataset           = "billing_data"                     # BigQuery dataset name
+schedule             = "0 1 * * *"                        # Daily at 1 AM
+timezone             = "Europe/Paris"                     # Scheduler timezone
+monitoring_project_id = ""                                # Optional monitoring project (leave empty to use tooling_project)
+python_code_name     = "tags-to-bigquery-v1.0.zip"       # Python code zip file name

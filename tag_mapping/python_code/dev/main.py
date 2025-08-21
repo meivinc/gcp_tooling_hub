@@ -1,6 +1,7 @@
 import json
 import os
 from datetime import datetime, timezone
+import pytz
 from google.cloud import resourcemanager_v3, bigquery
 from google.cloud.exceptions import NotFound
 from google.api_core import exceptions
@@ -131,8 +132,11 @@ def create_table_if_not_exists(table_id, schema, partition_field=None):
 
 def collect_project_data():
     """Collect all projects and their tags."""
+    # Use Paris timezone to match scheduler timezone
+    paris_tz = pytz.timezone('Europe/Paris')
     export_time = datetime.now(timezone.utc)
-    export_date = export_time.date()
+    export_time_paris = export_time.astimezone(paris_tz)
+    export_date = export_time_paris.date()
 
     print("Retrieving all projects...")
     try:
@@ -246,7 +250,11 @@ def collect_project_data():
 
 def upload_to_bigquery(projects_data, tags_data):
     """Upload data to BigQuery with 1-year retention."""
-    export_date = datetime.now(timezone.utc).date()
+    # Use Paris timezone to match scheduler timezone  
+    paris_tz = pytz.timezone('Europe/Paris')
+    export_time = datetime.now(timezone.utc)
+    export_time_paris = export_time.astimezone(paris_tz)
+    export_date = export_time_paris.date()
     
     print("Creating BigQuery tables if needed...")
     
@@ -271,7 +279,7 @@ def upload_to_bigquery(projects_data, tags_data):
 
     # Delete existing data for today (if re-running) and old data (>1 year)
     print("Cleaning existing data for today and data older than 1 year...")
-    retention_date = datetime.now(timezone.utc).date().replace(year=datetime.now().year - 1)
+    retention_date = export_date.replace(year=export_date.year - 1)
     
     for table_name in [BQ_TABLE_PROJECTS, BQ_TABLE_TAGS]:
         # Delete today's data (for re-runs)
