@@ -1,0 +1,945 @@
+{
+  "export_timestamp": "2025-12-12T16:32:51.272024",
+  "total_policies": 47,
+  "policies": [
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/iam.disableAuditLoggingExemption",
+      "constraint": "iam.disableAuditLoggingExemption",
+      "etag": "COWowsQGENCj/q8C",
+      "update_time": "2025-08-04T11:07:17.637506+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.requireOsLogin",
+      "constraint": "compute.requireOsLogin",
+      "etag": "COuowsQGEIiGjNAB",
+      "update_time": "2025-08-04T11:07:23.436405+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.disableGuestAttributesAccess",
+      "constraint": "compute.disableGuestAttributesAccess",
+      "etag": "COuowsQGEKjQrq8C",
+      "update_time": "2025-08-04T11:07:23.636201+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/cloudbuild.useBuildServiceAccount",
+      "constraint": "cloudbuild.useBuildServiceAccount",
+      "etag": "CMyowsQGEKD5l48D",
+      "update_time": "2025-08-04T11:06:52.837156+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/cloudfunctions.allowedIngressSettings",
+      "constraint": "cloudfunctions.allowedIngressSettings",
+      "etag": "CMuowsQGELjklM8B",
+      "update_time": "2025-08-04T11:06:51.434451+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "allowed_values": [
+            "ALLOW_INTERNAL_AND_GCLB"
+          ],
+          "denied_values": [],
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/run.managed.requireInvokerIam",
+      "constraint": "run.managed.requireInvokerIam",
+      "etag": "CKj/x74GEOCVxxo=",
+      "update_time": "2025-03-12T21:42:00.055692+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/gcp.detailedAuditLoggingMode",
+      "constraint": "gcp.detailedAuditLoggingMode",
+      "etag": "CO+owsQGEKiV8o4D",
+      "update_time": "2025-08-04T11:07:27.836537+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.skipDefaultNetworkCreation",
+      "constraint": "compute.skipDefaultNetworkCreation",
+      "etag": "CO2owsQGELDP0t8C",
+      "update_time": "2025-08-04T11:07:25.737454+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/iam.automaticIamGrantsForDefaultServiceAccounts",
+      "constraint": "iam.automaticIamGrantsForDefaultServiceAccounts",
+      "etag": "CPCowsQGEJCWsjs=",
+      "update_time": "2025-08-04T11:07:28.124554+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/resourcemanager.allowedExportDestinations",
+      "constraint": "resourcemanager.allowedExportDestinations",
+      "etag": "CMmG5q0GENj1jpgC",
+      "update_time": "2024-01-30T23:16:25.587447+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.requireShieldedVm",
+      "constraint": "compute.requireShieldedVm",
+      "etag": "COaowsQGEMiZ/UA=",
+      "update_time": "2025-08-04T11:07:18.136269+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/gcp.resourceLocations",
+      "constraint": "gcp.resourceLocations",
+      "etag": "CM6y4ckGEID35qwC",
+      "update_time": "2025-12-09T17:15:58.630832+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "allowed_values": [
+            "in:europe-locations"
+          ],
+          "denied_values": [],
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.disableVpcExternalIpv6",
+      "constraint": "compute.disableVpcExternalIpv6",
+      "etag": "COiowsQGEPiNwL0D",
+      "update_time": "2025-08-04T11:07:20.934283+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/sql.restrictPublicIp",
+      "constraint": "sql.restrictPublicIp",
+      "etag": "COqowsQGELj05/cB",
+      "update_time": "2025-08-04T11:07:22.519699+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.vmExternalIpAccess",
+      "constraint": "compute.vmExternalIpAccess",
+      "etag": "CMyowsQGELjF2KAB",
+      "update_time": "2025-08-04T11:06:52.336995+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": true,
+          "enforce": false,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/iam.allowedPolicyMemberDomains",
+      "constraint": "iam.allowedPolicyMemberDomains",
+      "etag": "CL3408YGENjo1BY=",
+      "update_time": "2025-09-25T08:24:29.047527+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "allowed_values": [
+            "C02636asw"
+          ],
+          "denied_values": [],
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.disableSerialPortAccess",
+      "constraint": "compute.disableSerialPortAccess",
+      "etag": "CPCowsQGELjKuDs=",
+      "update_time": "2025-08-04T11:07:28.124659+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.disableAllIpv6",
+      "constraint": "compute.disableAllIpv6",
+      "etag": "CO6owsQGEPjF+t4C",
+      "update_time": "2025-08-04T11:07:26.736011+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/storage.uniformBucketLevelAccess",
+      "constraint": "storage.uniformBucketLevelAccess",
+      "etag": "COeowsQGEIiHqd8C",
+      "update_time": "2025-08-04T11:07:19.736773+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/essentialcontacts.allowedContactDomains",
+      "constraint": "essentialcontacts.allowedContactDomains",
+      "etag": "CO7R9sQGEJjT84wD",
+      "update_time": "2025-08-14T09:14:22.832367+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "allowed_values": [
+            "@meivinlab.fr"
+          ],
+          "denied_values": [],
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.disableNestedVirtualization",
+      "constraint": "compute.disableNestedVirtualization",
+      "etag": "CO6owsQGEMCAs98C",
+      "update_time": "2025-08-04T11:07:26.736936+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/custom.instancetest",
+      "constraint": "custom.instancetest",
+      "etag": "CJKA7MgGEICxgLoC",
+      "update_time": "2025-11-17T10:59:30.658512+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.setNewProjectDefaultToZonalDNSOnly",
+      "constraint": "compute.setNewProjectDefaultToZonalDNSOnly",
+      "etag": "COyowsQGELDftq8C",
+      "update_time": "2025-08-04T11:07:24.636334+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/run.allowedIngress",
+      "constraint": "run.allowedIngress",
+      "etag": "CMuowsQGEPDc7m8=",
+      "update_time": "2025-08-04T11:06:51.234598+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "allowed_values": [
+            "internal-and-cloud-load-balancing"
+          ],
+          "denied_values": [],
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/iam.serviceAccountKeyExpiryHours",
+      "constraint": "iam.serviceAccountKeyExpiryHours",
+      "etag": "CMyowsQGENiq29oC",
+      "update_time": "2025-08-04T11:06:52.727111+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "allowed_values": [
+            "720h"
+          ],
+          "denied_values": [],
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/sql.restrictAuthorizedNetworks",
+      "constraint": "sql.restrictAuthorizedNetworks",
+      "etag": "COmowsQGEMDs63A=",
+      "update_time": "2025-08-04T11:07:21.236648+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.restrictLoadBalancerCreationForTypes",
+      "constraint": "compute.restrictLoadBalancerCreationForTypes",
+      "etag": "CM2owsQGENjUwBE=",
+      "update_time": "2025-08-04T11:06:53.036711+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "allowed_values": [
+            "is:EXTERNAL_MANAGED_HTTP_HTTPS",
+            "is:EXTERNAL_HTTP_HTTPS",
+            "in:INTERNAL",
+            "is:GLOBAL_EXTERNAL_MANAGED_HTTP_HTTPS"
+          ],
+          "denied_values": [],
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.restrictProtocolForwardingCreationForTypes",
+      "constraint": "compute.restrictProtocolForwardingCreationForTypes",
+      "etag": "CMyowsQGEPCL0P8B",
+      "update_time": "2025-08-04T11:06:52.536086+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "allowed_values": [
+            "INTERNAL"
+          ],
+          "denied_values": [],
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/storage.publicAccessPrevention",
+      "constraint": "storage.publicAccessPrevention",
+      "etag": "COyowsQGEJDiy70D",
+      "update_time": "2025-08-04T11:07:24.934474+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/iam.disableServiceAccountKeyUpload",
+      "constraint": "iam.disableServiceAccountKeyUpload",
+      "etag": "COeowsQGEJjUw44D",
+      "update_time": "2025-08-04T11:07:19.835775+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "organizations/123456789",
+      "resource_type": "organization",
+      "policy_name": "organizations/123456789/policies/compute.restrictXpnProjectLienRemoval",
+      "constraint": "compute.restrictXpnProjectLienRemoval",
+      "etag": "COaowsQGEMC7yd8C",
+      "update_time": "2025-08-04T11:07:18.737304+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "folders/111111111",
+      "resource_type": "folder",
+      "policy_name": "folders/111111111/policies/iam.managed.workloadIdentityPoolAwsAccounts",
+      "constraint": "iam.managed.workloadIdentityPoolAwsAccounts",
+      "etag": "CNPE9sgGEMjD2XE=",
+      "update_time": "2025-11-19T10:56:19.238445+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "projects/444444444",
+      "resource_type": "project",
+      "policy_name": "projects/444444444/policies/iam.disableServiceAccountKeyCreation",
+      "constraint": "iam.disableServiceAccountKeyCreation",
+      "etag": "CN/a9sQGEMidoyY=",
+      "update_time": "2025-08-14T09:33:19.080269+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/444444444",
+      "resource_type": "project",
+      "policy_name": "projects/444444444/policies/iam.managed.disableServiceAccountKeyCreation",
+      "constraint": "iam.managed.disableServiceAccountKeyCreation",
+      "etag": "CM7a9sQGEJCT0oQB",
+      "update_time": "2025-08-14T09:33:02.278170+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/444444444",
+      "resource_type": "project",
+      "policy_name": "projects/444444444/policies/iam.disableCrossProjectServiceAccountUsage",
+      "constraint": "iam.disableCrossProjectServiceAccountUsage",
+      "etag": "CMmW2MMGEJik6w8=",
+      "update_time": "2025-07-15T08:03:21.033215+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": false,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "projects/666666666",
+      "resource_type": "project",
+      "policy_name": "projects/666666666/policies/pubsub.managed.disableTopicMessageTransforms",
+      "constraint": "pubsub.managed.disableTopicMessageTransforms",
+      "etag": "CPHE9sgGEKjRqs8B",
+      "update_time": "2025-11-19T10:56:49.434809+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "projects/111111111",
+      "resource_type": "project",
+      "policy_name": "projects/111111111/policies/custom.allowCloudRunIngressWithIAP",
+      "constraint": "custom.allowCloudRunIngressWithIAP",
+      "etag": "CIbivMUGEPCn84wC",
+      "update_time": "2025-08-27T16:23:34.563926+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "projects/111111111",
+      "resource_type": "project",
+      "policy_name": "projects/111111111/policies/cloudfunctions.allowedIngressSettings",
+      "constraint": "cloudfunctions.allowedIngressSettings",
+      "etag": "CI3cvMUGENiJnaIB",
+      "update_time": "2025-08-27T16:10:53.340215+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/111111111",
+      "resource_type": "project",
+      "policy_name": "projects/111111111/policies/run.allowedIngress",
+      "constraint": "run.allowedIngress",
+      "etag": "CI3cvMUGELjqn6EB",
+      "update_time": "2025-08-27T16:10:53.338163+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/333333333",
+      "resource_type": "project",
+      "policy_name": "projects/333333333/policies/custom.crtest",
+      "constraint": "custom.crtest",
+      "etag": "CLj8nsYGEIjEtfAC",
+      "update_time": "2025-09-15T07:20:24.772629+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/333333333",
+      "resource_type": "project",
+      "policy_name": "projects/333333333/policies/run.allowedIngress",
+      "constraint": "run.allowedIngress",
+      "etag": "CM/ZosQGEKD35ZQC",
+      "update_time": "2025-07-29T11:13:19.580484+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/555555555",
+      "resource_type": "project",
+      "policy_name": "projects/555555555/policies/custom.postgresqlOnly",
+      "constraint": "custom.postgresqlOnly",
+      "etag": "CJTzgckGEIDWmCY=",
+      "update_time": "2025-11-21T14:39:16.080096+00:00",
+      "inherit_from_parent": false,
+      "reset": false,
+      "rules": [
+        {
+          "rule_index": 0,
+          "allow_all": false,
+          "deny_all": false,
+          "enforce": true,
+          "condition_expression": "",
+          "condition_title": "",
+          "condition_description": ""
+        }
+      ],
+      "rules_count": 1
+    },
+    {
+      "resource_name": "projects/555555555",
+      "resource_type": "project",
+      "policy_name": "projects/555555555/policies/sql.restrictPublicIp",
+      "constraint": "sql.restrictPublicIp",
+      "etag": "CI37gckGELD1jIYB",
+      "update_time": "2025-11-21T14:56:13.281230+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/222222222",
+      "resource_type": "project",
+      "policy_name": "projects/222222222/policies/compute.requireShieldedVm",
+      "constraint": "compute.requireShieldedVm",
+      "etag": "CJjt6skGEMjH0uIB",
+      "update_time": "2025-12-11T12:18:32.475309+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/222222222",
+      "resource_type": "project",
+      "policy_name": "projects/222222222/policies/gcp.resourceLocations",
+      "constraint": "gcp.resourceLocations",
+      "etag": "CKrb6skGEJCD2OUB",
+      "update_time": "2025-12-11T11:40:26.481690+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/222222222",
+      "resource_type": "project",
+      "policy_name": "projects/222222222/policies/compute.vmExternalIpAccess",
+      "constraint": "compute.vmExternalIpAccess",
+      "etag": "CLnb6skGEKjJ5IUB",
+      "update_time": "2025-12-11T11:40:41.280569+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    },
+    {
+      "resource_name": "projects/222222222",
+      "resource_type": "project",
+      "policy_name": "projects/222222222/policies/run.allowedIngress",
+      "constraint": "run.allowedIngress",
+      "etag": "CMvLlcUGEKjN3fMC",
+      "update_time": "2025-08-20T06:06:03.779577+00:00",
+      "inherit_from_parent": false,
+      "reset": true,
+      "rules": [],
+      "rules_count": 0
+    }
+  ]
+}

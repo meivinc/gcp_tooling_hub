@@ -1,0 +1,386 @@
+{
+  "total_unique_constraints": 39,
+  "constraints": [
+    {
+      "constraint": "cloudbuild.useBuildServiceAccount",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "cloudfunctions.allowedIngressSettings",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 2,
+      "folders": [],
+      "projects": [
+        "projects/111111111"
+      ]
+    },
+    {
+      "constraint": "compute.disableAllIpv6",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.disableGuestAttributesAccess",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.disableNestedVirtualization",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.disableSerialPortAccess",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.disableVpcExternalIpv6",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.requireOsLogin",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.requireShieldedVm",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 2,
+      "folders": [],
+      "projects": [
+        "projects/222222222"
+      ]
+    },
+    {
+      "constraint": "compute.restrictLoadBalancerCreationForTypes",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.restrictProtocolForwardingCreationForTypes",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.restrictXpnProjectLienRemoval",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.setNewProjectDefaultToZonalDNSOnly",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.skipDefaultNetworkCreation",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "compute.vmExternalIpAccess",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 2,
+      "folders": [],
+      "projects": [
+        "projects/222222222"
+      ]
+    },
+    {
+      "constraint": "custom.allowCloudRunIngressWithIAP",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 1,
+      "folders": [],
+      "projects": [
+        "projects/111111111"
+      ]
+    },
+    {
+      "constraint": "custom.crtest",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 1,
+      "folders": [],
+      "projects": [
+        "projects/333333333"
+      ]
+    },
+    {
+      "constraint": "custom.instancetest",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "custom.postgresqlOnly",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 1,
+      "folders": [],
+      "projects": [
+        "projects/555555555"
+      ]
+    },
+    {
+      "constraint": "essentialcontacts.allowedContactDomains",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "gcp.detailedAuditLoggingMode",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "gcp.resourceLocations",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 2,
+      "folders": [],
+      "projects": [
+        "projects/222222222"
+      ]
+    },
+    {
+      "constraint": "iam.allowedPolicyMemberDomains",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "iam.automaticIamGrantsForDefaultServiceAccounts",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "iam.disableAuditLoggingExemption",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "iam.disableCrossProjectServiceAccountUsage",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 1,
+      "folders": [],
+      "projects": [
+        "projects/444444444"
+      ]
+    },
+    {
+      "constraint": "iam.disableServiceAccountKeyCreation",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 1,
+      "folders": [],
+      "projects": [
+        "projects/444444444"
+      ]
+    },
+    {
+      "constraint": "iam.disableServiceAccountKeyUpload",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "iam.managed.disableServiceAccountKeyCreation",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 1,
+      "folders": [],
+      "projects": [
+        "projects/444444444"
+      ]
+    },
+    {
+      "constraint": "iam.managed.workloadIdentityPoolAwsAccounts",
+      "application_levels": "Folder",
+      "folder_count": 1,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [
+        "folders/111111111"
+      ],
+      "projects": []
+    },
+    {
+      "constraint": "iam.serviceAccountKeyExpiryHours",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "pubsub.managed.disableTopicMessageTransforms",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 1,
+      "folders": [],
+      "projects": [
+        "projects/666666666"
+      ]
+    },
+    {
+      "constraint": "resourcemanager.allowedExportDestinations",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "run.allowedIngress",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 3,
+      "total_applications": 4,
+      "folders": [],
+      "projects": [
+        "projects/222222222",
+        "projects/111111111",
+        "projects/333333333"
+      ]
+    },
+    {
+      "constraint": "run.managed.requireInvokerIam",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "sql.restrictAuthorizedNetworks",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "sql.restrictPublicIp",
+      "application_levels": "Project",
+      "folder_count": 0,
+      "project_count": 1,
+      "total_applications": 2,
+      "folders": [],
+      "projects": [
+        "projects/555555555"
+      ]
+    },
+    {
+      "constraint": "storage.publicAccessPrevention",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    },
+    {
+      "constraint": "storage.uniformBucketLevelAccess",
+      "application_levels": "",
+      "folder_count": 0,
+      "project_count": 0,
+      "total_applications": 1,
+      "folders": [],
+      "projects": []
+    }
+  ]
+}

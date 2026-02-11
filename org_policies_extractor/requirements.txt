@@ -1,0 +1,2 @@
+google-cloud-org-policy==1.15.0
+google-cloud-resource-manager==1.12.3
