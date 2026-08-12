@@ -72,6 +72,8 @@ python export_org_policies.py \
 
 - `--org-id`: Organization ID (numeric) or full organization name (organizations/123456789)
 - `--folder-id`: One or more Folder IDs (numeric) or full folder names (folders/123456789)
+- `--include-ancestors` / `--no-include-ancestors`: Automatically walk up the parent hierarchy to discover inherited policies from ancestor folders and Organization when using `--folder-id` (default: `True`).
+- `--include-effective`: Fetch computed effective policy evaluations using GCP's `GetEffectivePolicy` API for constraints (default: `False`).
 - `--output-json`: Output JSON file path (default: org_policies_YYYYMMDD_HHMMSS.json)
 - `--output-csv`: Output CSV file path (default: org_policies_YYYYMMDD_HHMMSS.csv)
 

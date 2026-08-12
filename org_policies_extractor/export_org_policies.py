@@ -8,19 +8,22 @@ import json
 import csv
 from google.cloud import orgpolicy_v2
 from google.cloud import resourcemanager_v3
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import argparse
 from datetime import datetime
 
 
 class OrgPolicyExporter:
-    def __init__(self):
+    def __init__(self, include_ancestors: bool = True, include_effective: bool = False):
         self.policy_client = orgpolicy_v2.OrgPolicyClient()
         self.folder_client = resourcemanager_v3.FoldersClient()
         self.project_client = resourcemanager_v3.ProjectsClient()
         self.organization_client = resourcemanager_v3.OrganizationsClient()
         self.policies_data = []
         self.resource_display_names = {}  # Cache for resource display names
+        self.processed_resources = set()  # Track processed resources to avoid duplicate exports
+        self.include_ancestors = include_ancestors
+        self.include_effective = include_effective
 
     def get_display_name(self, resource_name: str, resource_type: str) -> str:
         """Get display name for a resource (organization, folder or project)."""
@@ -50,8 +53,49 @@ class OrgPolicyExporter:
         self.resource_display_names[resource_name] = display_name
         return display_name
 
-    def list_policies_for_resource(self, resource_name: str, resource_type: str) -> List[Dict[str, Any]]:
-        """List all policies for a given resource."""
+    def get_ancestors(self, folder_name: str) -> List[Dict[str, str]]:
+        """Traverse upwards from a folder to find all ancestor folders and the parent organization."""
+        ancestors = []
+        current_name = folder_name
+
+        while current_name and (current_name.startswith('folders/') or current_name.startswith('projects/')):
+            try:
+                if current_name.startswith('folders/'):
+                    request = resourcemanager_v3.GetFolderRequest(name=current_name)
+                    folder = self.folder_client.get_folder(request=request)
+                    self.resource_display_names[current_name] = folder.display_name
+                    parent = folder.parent
+                elif current_name.startswith('projects/'):
+                    request = resourcemanager_v3.GetProjectRequest(name=current_name)
+                    project = self.project_client.get_project(request=request)
+                    self.resource_display_names[current_name] = project.display_name
+                    parent = project.parent
+                else:
+                    break
+
+                if not parent:
+                    break
+
+                if parent.startswith('organizations/'):
+                    org_display = self.get_display_name(parent, 'organization')
+                    ancestors.append({'resource_name': parent, 'resource_type': 'organization', 'display_name': org_display})
+                    break
+                elif parent.startswith('folders/'):
+                    folder_display = self.get_display_name(parent, 'folder')
+                    ancestors.append({'resource_name': parent, 'resource_type': 'folder', 'display_name': folder_display})
+                    current_name = parent
+                else:
+                    break
+            except Exception as e:
+                print(f"  Warning: Failed to fetch ancestor for {current_name}: {str(e)}")
+                break
+
+        # Return ancestors ordered from top-most (Organization) down to direct parent
+        ancestors.reverse()
+        return ancestors
+
+    def list_policies_for_resource(self, resource_name: str, resource_type: str, policy_type: str = 'direct') -> List[Dict[str, Any]]:
+        """List all policies explicitly set on a given resource."""
         policies = []
 
         # Get display name for this resource
@@ -71,6 +115,8 @@ class OrgPolicyExporter:
                     'update_time': policy.spec.update_time.isoformat() if policy.spec and policy.spec.update_time else None,
                     'inherit_from_parent': policy.spec.inherit_from_parent if policy.spec else None,
                     'reset': policy.spec.reset if policy.spec else None,
+                    'policy_type': policy_type,  # 'direct', 'ancestor', or 'effective'
+                    'is_inherited': (policy_type == 'ancestor'),
                 }
                 
                 # Add rules information
@@ -107,8 +153,70 @@ class OrgPolicyExporter:
                 
         except Exception as e:
             print(f"Error listing policies for {resource_name}: {str(e)}")
+            if "PermissionDenied" in str(type(e).__name__) or "403" in str(e):
+                print(f"  --> Hint: Ensure your account has 'roles/orgpolicy.policyViewer' or 'orgpolicy.policies.list' permission on {resource_name}.")
         
         return policies
+
+    def get_effective_policy_for_resource(self, resource_name: str, resource_type: str, constraint: str) -> Optional[Dict[str, Any]]:
+        """Fetch the effective evaluated policy for a specific constraint on a resource."""
+        display_name = self.get_display_name(resource_name, resource_type)
+        policy_resource_name = f"{resource_name}/policies/{constraint}"
+
+        try:
+            request = orgpolicy_v2.GetEffectivePolicyRequest(name=policy_resource_name)
+            policy = self.policy_client.get_effective_policy(request=request)
+
+            policy_data = {
+                'resource_name': resource_name,
+                'resource_type': resource_type,
+                'resource_display_name': display_name,
+                'policy_name': policy.name if hasattr(policy, 'name') else policy_resource_name,
+                'constraint': constraint,
+                'etag': policy.spec.etag if policy.spec else None,
+                'update_time': policy.spec.update_time.isoformat() if policy.spec and policy.spec.update_time else None,
+                'inherit_from_parent': True,
+                'reset': False,
+                'policy_type': 'effective',
+                'is_inherited': True,
+            }
+
+            if policy.spec and policy.spec.rules:
+                rules_summary = []
+                for idx, rule in enumerate(policy.spec.rules):
+                    rule_info = {
+                        'rule_index': idx,
+                        'allow_all': rule.allow_all if hasattr(rule, 'allow_all') else None,
+                        'deny_all': rule.deny_all if hasattr(rule, 'deny_all') else None,
+                        'enforce': rule.enforce if hasattr(rule, 'enforce') else None,
+                    }
+                    if rule.values:
+                        rule_info['allowed_values'] = list(rule.values.allowed_values) if rule.values.allowed_values else []
+                        rule_info['denied_values'] = list(rule.values.denied_values) if rule.values.denied_values else []
+                    if rule.condition:
+                        rule_info['condition_expression'] = rule.condition.expression
+                        rule_info['condition_title'] = rule.condition.title
+                        rule_info['condition_description'] = rule.condition.description
+                    rules_summary.append(rule_info)
+                policy_data['rules'] = rules_summary
+                policy_data['rules_count'] = len(rules_summary)
+            else:
+                policy_data['rules'] = []
+                policy_data['rules_count'] = 0
+
+            return policy_data
+        except Exception as e:
+            # Effective policy might fail if constraint doesn't apply or lacks permission
+            return None
+
+    def fetch_effective_policies(self, resource_name: str, resource_type: str, constraints: List[str]):
+        """Fetch effective policies for a list of constraints on a resource."""
+        effective_policies = []
+        for constraint in set(constraints):
+            eff_pol = self.get_effective_policy_for_resource(resource_name, resource_type, constraint)
+            if eff_pol:
+                effective_policies.append(eff_pol)
+        return effective_policies
 
     def list_root_folders(self, organization_name: str) -> List[str]:
         """List all root folders under an organization."""
@@ -161,59 +269,119 @@ class OrgPolicyExporter:
 
         return projects
 
+    def process_ancestors_if_needed(self, resource_name: str):
+        """Discover and process ancestor folders and organization policies."""
+        if not self.include_ancestors:
+            return
+
+        ancestors = self.get_ancestors(resource_name)
+        if ancestors:
+            print(f"\n--- Ancestor Hierarchy for {resource_name} ---")
+            for anc in ancestors:
+                anc_name = anc['resource_name']
+                anc_type = anc['resource_type']
+                anc_display = anc['display_name']
+
+                if anc_name in self.processed_resources:
+                    continue
+
+                print(f"Processing ancestor {anc_type}: {anc_name} ({anc_display})")
+                anc_policies = self.list_policies_for_resource(anc_name, anc_type, policy_type='ancestor')
+                self.policies_data.extend(anc_policies)
+                self.processed_resources.add(anc_name)
+                print(f"  Found {len(anc_policies)} policies for ancestor {anc_type}")
+
     def process_organization_recursive(self, organization_name: str):
         """Recursively process an organization and all its children."""
+        if organization_name in self.processed_resources:
+            return
+        self.processed_resources.add(organization_name)
+
         # Get and cache display name for this organization
         display_name = self.get_display_name(organization_name, 'organization')
         print(f"Processing organization: {organization_name} ({display_name})")
 
         # Get policies for the organization itself
-        org_policies = self.list_policies_for_resource(organization_name, 'organization')
+        org_policies = self.list_policies_for_resource(organization_name, 'organization', policy_type='direct')
         self.policies_data.extend(org_policies)
         print(f"  Found {len(org_policies)} policies for organization")
+
+        # Collect constraints for effective policies if enabled
+        discovered_constraints = [p['constraint'] for p in org_policies if p.get('constraint')]
+
+        if self.include_effective and discovered_constraints:
+            eff_policies = self.fetch_effective_policies(organization_name, 'organization', discovered_constraints)
+            self.policies_data.extend(eff_policies)
+            print(f"  Fetched {len(eff_policies)} effective policies for organization")
 
         # Get and process all root folders
         root_folders = self.list_root_folders(organization_name)
         print(f"  Found {len(root_folders)} root folders")
         for folder in root_folders:
-            self.process_folder_recursive(folder)
+            self.process_folder_recursive(folder, is_root_target=False)
 
         # Get and process all projects directly under the organization
         projects = self.list_projects(organization_name)
         print(f"  Found {len(projects)} projects directly under organization")
         for project in projects:
-            project_display_name = self.get_display_name(project, 'project')
-            print(f"    Processing project: {project} ({project_display_name})")
-            project_policies = self.list_policies_for_resource(project, 'project')
-            self.policies_data.extend(project_policies)
-            print(f"      Found {len(project_policies)} policies for project")
+            self.process_project(project, 'organization', discovered_constraints)
 
-    def process_folder_recursive(self, folder_name: str):
+    def process_project(self, project_name: str, parent_type: str, known_constraints: List[str] = None):
+        """Process a single project."""
+        if project_name in self.processed_resources:
+            return
+        self.processed_resources.add(project_name)
+
+        project_display_name = self.get_display_name(project_name, 'project')
+        print(f"    Processing project: {project_name} ({project_display_name})")
+        project_policies = self.list_policies_for_resource(project_name, 'project', policy_type='direct')
+        self.policies_data.extend(project_policies)
+        print(f"      Found {len(project_policies)} direct policies for project")
+
+        if self.include_effective:
+            constraints_to_check = list(set([p['constraint'] for p in project_policies if p.get('constraint')] + (known_constraints or [])))
+            if constraints_to_check:
+                eff_policies = self.fetch_effective_policies(project_name, 'project', constraints_to_check)
+                self.policies_data.extend(eff_policies)
+                print(f"      Fetched {len(eff_policies)} effective policies for project")
+
+    def process_folder_recursive(self, folder_name: str, is_root_target: bool = True):
         """Recursively process a folder and all its children."""
+        # Process ancestors first if requested
+        if is_root_target:
+            self.process_ancestors_if_needed(folder_name)
+
+        if folder_name in self.processed_resources:
+            return
+        self.processed_resources.add(folder_name)
+
         # Get and cache display name for this folder
         display_name = self.get_display_name(folder_name, 'folder')
-        print(f"Processing folder: {folder_name} ({display_name})")
+        print(f"\nProcessing folder: {folder_name} ({display_name})")
 
         # Get policies for the folder itself
-        folder_policies = self.list_policies_for_resource(folder_name, 'folder')
+        folder_policies = self.list_policies_for_resource(folder_name, 'folder', policy_type='direct')
         self.policies_data.extend(folder_policies)
-        print(f"  Found {len(folder_policies)} policies for folder")
+        print(f"  Found {len(folder_policies)} direct policies for folder")
+
+        discovered_constraints = [p['constraint'] for p in self.policies_data if p.get('constraint')]
+
+        if self.include_effective and discovered_constraints:
+            eff_policies = self.fetch_effective_policies(folder_name, 'folder', discovered_constraints)
+            self.policies_data.extend(eff_policies)
+            print(f"  Fetched {len(eff_policies)} effective policies for folder")
 
         # Get and process all subfolders
         subfolders = self.list_subfolders(folder_name)
         print(f"  Found {len(subfolders)} subfolders")
         for subfolder in subfolders:
-            self.process_folder_recursive(subfolder)
+            self.process_folder_recursive(subfolder, is_root_target=False)
 
         # Get and process all projects
         projects = self.list_projects(folder_name)
         print(f"  Found {len(projects)} projects")
         for project in projects:
-            project_display_name = self.get_display_name(project, 'project')
-            print(f"    Processing project: {project} ({project_display_name})")
-            project_policies = self.list_policies_for_resource(project, 'project')
-            self.policies_data.extend(project_policies)
-            print(f"      Found {len(project_policies)} policies for project")
+            self.process_project(project, 'folder', discovered_constraints)
 
     def export_to_json(self, output_file: str):
         """Export policies data to JSON file."""
@@ -240,6 +408,8 @@ class OrgPolicyExporter:
                 'resource_name': policy['resource_name'],
                 'resource_display_name': policy['resource_display_name'],
                 'resource_type': policy['resource_type'],
+                'policy_type': policy.get('policy_type', 'direct'),
+                'is_inherited': policy.get('is_inherited', False),
                 'policy_name': policy['policy_name'],
                 'constraint': policy['constraint'],
                 'etag': policy['etag'],
@@ -296,6 +466,19 @@ def main():
     )
 
     parser.add_argument(
+        '--include-ancestors',
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help='Automatically fetch policies from ancestor folders and organization when using --folder-id (default: True)'
+    )
+    parser.add_argument(
+        '--include-effective',
+        action='store_true',
+        default=False,
+        help='Fetch evaluated effective policies for resources in addition to explicit policy definitions'
+    )
+
+    parser.add_argument(
         '--output-json',
         default=None,
         help='Output JSON file path (default: org_policies_YYYYMMDD_HHMMSS.json)'
@@ -314,7 +497,10 @@ def main():
     output_csv = args.output_csv if args.output_csv else f'org_policies_{timestamp}.csv'
 
     # Create exporter
-    exporter = OrgPolicyExporter()
+    exporter = OrgPolicyExporter(
+        include_ancestors=args.include_ancestors,
+        include_effective=args.include_effective
+    )
 
     # Process organization or folder(s)
     if args.org_id:
@@ -336,13 +522,15 @@ def main():
         print(f"Starting organization policy export for {len(folder_names)} folder(s):")
         for folder in folder_names:
             print(f"  - {folder}")
+        print(f"Include Ancestors: {args.include_ancestors}")
+        print(f"Include Effective Policies: {args.include_effective}")
         print(f"\nOutput files: {output_json}, {output_csv}\n")
 
         for folder_name in folder_names:
             print(f"\n{'='*80}")
             print(f"Processing folder hierarchy: {folder_name}")
             print(f"{'='*80}")
-            exporter.process_folder_recursive(folder_name)
+            exporter.process_folder_recursive(folder_name, is_root_target=True)
 
     # Export to both formats
     print(f"\n{'='*80}")
@@ -359,3 +547,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
