@@ -243,6 +243,9 @@ The complete JSON structure:
 - `resource_name`: Full GCP resource name (e.g., "folders/123" or "projects/my-project")
 - `resource_type`: Type of resource ("organization", "folder", or "project")
 - `resource_display_name`: Human-readable display name (only in analyze_org_policies.py)
+- `policy_type`: Type of policy entry (`"direct"`, `"inherited"`, `"ancestor"`, or `"effective"`)
+- `is_inherited`: Boolean indicating if policy rule is inherited from a parent resource
+- `source_resource`: Full GCP resource name where the policy rule originated (e.g. `"organizations/123456789"`)
 - `policy_name`: Full policy resource name
 - `constraint`: The organization policy constraint name
 - `etag`: Entity tag for concurrency control
